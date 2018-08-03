@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 import scrapy
 from MySolution.items import MysolutionItem
+from scrapy.exceptions import CloseSpider
 
 
 class MysolutionSpiderSpider(scrapy.Spider):
@@ -51,6 +52,9 @@ class MysolutionSpiderSpider(scrapy.Spider):
             #formatting day
             i_date[1] = i_date[1].strip(',')
             mysolution_item["date"] = i_date
-
+            # Add termination condition
+            # Aug. 2nd as an example
+            if i_date[:3] == ['8', '2', '2018']:
+                raise CloseSpider('Termination Condition Met')
             yield mysolution_item
 
