@@ -25,7 +25,7 @@ class MysolutionPipeline(object):
 
         print ('Look at items cate %s ' % type(category))
         #add ,
-        lines = json.dumps(dict(item), ensure_ascii=False) + ',' + '\n'
+        lines = json.dumps(dict(item), ensure_ascii=False) + '\n'
         self.file.write(lines)
         return item
 
